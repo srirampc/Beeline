@@ -20,23 +20,38 @@ def generateInputs(RunnerObj):
         newExpressionData = ExpressionData.copy()
         
         # Write .csv file
-        newExpressionData.to_csv(RunnerObj.inputDir.joinpath("PPCOR/ExpressionData.csv"),
-                             sep = ',', header  = True, index = True)
+        newExpressionData.to_csv(
+            RunnerObj.inputDir.joinpath("PPCOR/ExpressionData.csv"),
+            sep = ',',
+            header  = True,
+            index = True
+        )
     
 def run(RunnerObj):
     '''
     Function to run PPCOR algorithm
     '''
-    inputPath = "data" + str(RunnerObj.inputDir).split(str(Path.cwd()))[1] + \
-                    "/PPCOR/ExpressionData.csv"
+    # inputPath = "data" + str(RunnerObj.inputDir).split(str(Path.cwd()))[1] + \
+    #                 "/PPCOR/ExpressionData.csv"
+    inputPath = RunnerObj.inputDir.joinpath("PPCOR/ExpressionData.csv")
     
     # make output dirs if they do not exist:
     outDir = "outputs/"+str(RunnerObj.inputDir).split("inputs/")[1]+"/PPCOR/"
     os.makedirs(outDir, exist_ok = True)
     
-    outPath = "data/" +  str(outDir) + 'outFile.txt'
-    cmdToRun = ' '.join(['docker run --rm -v', str(Path.cwd())+':/data/ grnbeeline/ppcor:base /bin/sh -c \"time -v -o', "data/" + str(outDir) + 'time.txt', 'Rscript runPPCOR.R',
-                         inputPath, outPath, '\"'])
+    # outPath = "data/" +  str(outDir) + 'outFile.txt'
+    timePath = str(outDir) + 'time.txt'
+    outPath = str(outDir) + 'outFile.txt'
+    cmdToRun = ' '.join([
+        # 'docker run --rm -v', 
+        # str(Path.cwd())+':/data/ grnbeeline/ppcor:base /bin/sh -c \"',
+        '/usr/bin/time -v -o',
+        timePath,
+        'Rscript Algorithms/PPCOR/runPPCOR.R',
+        str(inputPath),
+        outPath,
+        # '\"'
+    ])
     print(cmdToRun)
     os.system(cmdToRun)
 

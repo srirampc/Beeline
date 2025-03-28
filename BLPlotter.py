@@ -178,7 +178,7 @@ def COplot(inputDF, width = 12, height = 7, randValues = [], shape = [],
         
         # Plot metric column headers
         plt.text(colStart+2, maxRows + 2, 
-                        levls[levlIdx], fontsize=18, rotation=0,
+                        levls[levlIdx], fontsize=10, rotation=0,
                         ha="center", va="center",
                         bbox=dict(boxstyle="round",
                         ec=(1,1,1), fc=(1,1,1)))
@@ -190,7 +190,7 @@ def COplot(inputDF, width = 12, height = 7, randValues = [], shape = [],
 
                 # Plot dataset column headers
                 plt.text(colStart + colIdx + 1, maxRows + 1, colNames[colIdx],
-                         fontsize=18, rotation=rotation[levlIdx],
+                         fontsize=10, rotation=rotation[levlIdx],
                          ha="center", va="center",
                          bbox=dict(boxstyle="round",
                          ec=(1,1,1,0),
@@ -227,7 +227,7 @@ def COplot(inputDF, width = 12, height = 7, randValues = [], shape = [],
                             fSize = 24
 
                         plt.text(colStart+colIdx+1, rowIdx+1, 
-                            txt, fontsize= fSize, rotation=0,
+                            txt, fontsize=10, rotation=0,
                             ha="center", va="center", color = col,
                             bbox=dict(boxstyle="round", 
                             ec=(1,1,1,0), fc=(1,1,1,0)))
@@ -244,7 +244,7 @@ def COplot(inputDF, width = 12, height = 7, randValues = [], shape = [],
                         col = '#2E4053'
                         fSize = 11
                         plt.text(colStart+colIdx+1, rowIdx+1, 
-                            txt, fontsize= fSize, rotation=0,
+                            txt, fontsize=10, rotation=0,
                             ha="center", va="center", color = col,
                             bbox=dict(boxstyle="round", 
                             ec=(1,1,1,0), fc=(1,1,1,0)))              
@@ -259,7 +259,7 @@ def COplot(inputDF, width = 12, height = 7, randValues = [], shape = [],
                             fSize = 24
 
                             plt.text(colStart+colIdx+1, rowIdx+1, 
-                            txt, fontsize= fSize, rotation=0,
+                            txt, fontsize=10, rotation=0,
                             ha="center", va="center", color = col,
                             bbox=dict(boxstyle="round", 
                             ec=(1,1,1,0), fc=(1,1,1,0)))
@@ -354,13 +354,13 @@ def COplot(inputDF, width = 12, height = 7, randValues = [], shape = [],
                         # Plot the cell value as text in the maximum and minimum value cells
                         if value >= 1:
                             plt.text(colStart+colIdx+1, rowIdx+1, 
-                            round(txt,1), fontsize= 18, rotation=0,
+                            round(txt,1), fontsize= 10, rotation=0,
                             ha="center", va="center", color = textCol[0],
                             bbox=dict(boxstyle="round", 
                             ec=(1,1,1,0), fc=(1,1,1,0)))
                         if value <= 0:
                             plt.text(colStart+colIdx+1, rowIdx+1, 
-                            round(txt,1), fontsize= 18, rotation=0,
+                            round(txt,1), fontsize= 10, rotation=0,
                             ha="center", va="center", color = textCol[1],
                             bbox=dict(boxstyle="round", 
                             ec=(1,1,1,0), fc=(1,1,1,0)))

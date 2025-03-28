@@ -12,6 +12,10 @@ import BLRun.grisliRunner as GRISLI
 import BLRun.singeRunner as SINGE
 import BLRun.scribeRunner as SCRIBE
 import BLRun.scsglRunner as SCSGL
+import BLRun.xgbDenseRunner as XGBDR
+import BLRun.xgbGPUDenseRunner as XGBGPDR
+import BLRun.lightbmDenseRunner as LBMDR
+import BLRun.arbDefaultRunner as ARBDR
 
 from pathlib import Path
 
@@ -28,7 +32,11 @@ InputMapper = {'SCODE':SCODE.generateInputs,
                'GRISLI':GRISLI.generateInputs,
                'SINGE':SINGE.generateInputs,
                'SCRIBE':SCRIBE.generateInputs,
-               'SCSGL':SCSGL.generateInputs}
+               'SCSGL':SCSGL.generateInputs,
+               'XGBDENSE': XGBDR.generateInputs,
+               'XGBGPUDENSE': XGBGPDR.generateInputs,
+               'LGBDENSE': LBMDR.generateInputs,
+               'ARBDEF': ARBDR.generateInputs,}
 
 
 
@@ -46,7 +54,11 @@ AlgorithmMapper = {'SCODE':SCODE.run,
             'GRISLI':GRISLI.run,
             'SINGE':SINGE.run,
             'SCRIBE':SCRIBE.run,
-            'SCSGL':SCSGL.run}
+            'SCSGL':SCSGL.run,
+            'XGBDENSE':XGBDR.run,
+            'XGBGPUDENSE':XGBGPDR.run,
+            'LGBDENSE': LBMDR.run,
+            'ARBDEF':ARBDR.run}
 
 
 
@@ -63,7 +75,12 @@ OutputParser = {'SCODE':SCODE.parseOutput,
             'GRISLI':GRISLI.parseOutput,
             'SINGE':SINGE.parseOutput,
             'SCRIBE':SCRIBE.parseOutput,
-            'SCSGL':SCSGL.parseOutput}
+            'SCSGL':SCSGL.parseOutput,
+            'XGBDENSE':XGBDR.parseOutput,
+            'XGBGPUDENSE':XGBGPDR.parseOutput,
+            'LGBDENSE': LBMDR.parseOutput,
+            'ARBDEF':ARBDR.parseOutput,
+            }
 
 
 class Runner(object):

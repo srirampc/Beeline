@@ -23,16 +23,26 @@ def run(RunnerObj):
     '''
     Function to run PIDC algorithm
     '''
-    inputPath = "data" + str(RunnerObj.inputDir).split(str(Path.cwd()))[1] + \
-                    "/PIDC/ExpressionData.csv"
+    inputPath = RunnerObj.inputDir.joinpath("PIDC/ExpressionData.csv")
+    #  inputPath = "data" + str(RunnerObj.inputDir).split(str(Path.cwd()))[1] + \
+    #                  "/PIDC/ExpressionData.csv"
     
     # make output dirs if they do not exist:
     outDir = "outputs/"+str(RunnerObj.inputDir).split("inputs/")[1]+"/PIDC/"
     os.makedirs(outDir, exist_ok = True)
-    
-    outPath = 'data/'+ str(outDir) + 'outFile.txt'
-    cmdToRun = ' '.join(['docker run --rm -v', str(Path.cwd())+':/data grnbeeline/pidc:base /bin/sh -c \"time -v -o', "data/" + str(outDir) + 'time.txt', 'julia runPIDC.jl',
-                         inputPath, outPath, '\"'])
+    # outDir = 'data/' + str(outDir)
+    timePath = str(outDir) + 'time.txt'
+    outPath = str(outDir) + 'outFile.txt'
+    cmdToRun = ' '.join([
+        # 'docker run --rm -v', 
+        # str(Path.cwd())+':/data grnbeeline/pidc:base /bin/sh -c \"',
+        '/usr/bin/time -v -o',
+        timePath,
+        'julia Algorithms/PIDC/runPIDC.jl',
+        str(inputPath),
+        outPath,
+        # '\"'
+    ])
     print(cmdToRun)
     os.system(cmdToRun)
 
