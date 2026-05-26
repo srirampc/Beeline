@@ -31,12 +31,13 @@ class PPCORRunner(Runner):
         Function to run PPCOR algorithm
         '''
 
-        cmdToRun = ' '.join(['docker run --rm',
-                            f"-v {self.working_dir}:/usr/working_dir",
-                            f'{self.image} /bin/sh -c \"time -v -o',
-                            "/usr/working_dir/time.txt",
-                            'Rscript runPPCOR.R',
-                            "/usr/working_dir/ExpressionData.csv", "/usr/working_dir/outFile.txt", '\"'])
+        cmdToRun = ' '.join([
+            'time -v -o',
+            f"{self.working_dir}/time.txt",
+            'Rscript Algorithms/PPCOR/runPPCOR.R',
+            f"{self.working_dir}/ExpressionData.csv",
+            f"{self.working_dir}/outFile.txt",
+        ])
 
         # Run command
         self._run_docker(cmdToRun)

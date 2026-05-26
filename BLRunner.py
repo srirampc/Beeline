@@ -17,6 +17,15 @@ from BLRun.scsglRunner import SCSGLRunner
 from BLRun.sinceritiesRunner import SINCERITIESRunner
 from BLRun.singeRunner import SINGERunner
 from BLRun.pearsonRunner import PearsonRunner
+from BLRun.arbDefaultRunner import ARBDefaultRunner
+from BLRun.clrRunner import CLRRunner
+from BLRun.miRunner import MIRunner
+from BLRun.lightbmDenseRunner import LightBMRunner
+from BLRun.xgbDenseRunner import XGBRunner
+from BLRun.dpiRunner import DPIRunner
+from BLRun.mcp4Runner import MCP4Runner
+from BLRun.mcp3Runner import MCP3Runner
+from BLRun.mcp2Runner import MCP2Runner
 
 RUNNERS = {
     'GENIE3':       GENIE3Runner,
@@ -33,6 +42,16 @@ RUNNERS = {
     'SCSGL':        SCSGLRunner,
     'SINCERITIES':  SINCERITIESRunner,
     'SINGE':        SINGERunner,
+    'ARBORETO':     ARBDefaultRunner,
+    'CLR':          CLRRunner,
+    'MI':           MIRunner,
+    'LGBM':         LightBMRunner,
+    'XGB':          XGBRunner,
+    'ARBORETO':     ARBDefaultRunner,
+    'DPI':          DPIRunner,
+    'MCP2':         MCP2Runner,
+    'MCP3':         MCP3Runner,
+    'MCP4':         MCP4Runner,
 }
 
 

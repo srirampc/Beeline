@@ -24,19 +24,22 @@ class GENIE3Runner(Runner):
             # Write .csv file — arboreto expects cells as rows, genes as columns
             ExpressionData.T.to_csv(GENIE3_EXPRESSION_FILE,
                                  sep = '\t', header  = True, index = True)
+        self.inputPath = GENIE3_EXPRESSION_FILE
+        self.outFile = f"{self.working_dir}/outFile.txt"
 
     def run(self):
         '''
         Function to run GENIE3 algorithm
         '''
 
-        cmdToRun = ' '.join(['docker run --rm',
-                            f"-v {self.working_dir}:/usr/working_dir",
-                            '--expose=41269',
-                            f'{self.image} /bin/sh -c \"time -v -o',
-                            "/usr/working_dir/time.txt",
-                            'python runArboreto.py --algo=GENIE3',
-                            '--inFile=/usr/working_dir/ExpressionData.csv', '--outFile=/usr/working_dir/outFile.txt', '\"'])
+        timePath = str(self.working_dir) + '/time.txt'
+        cmdToRun = ' '.join([
+            'time -v -o',
+            timePath,
+            'python runArboreto.py --algo=GENIE3',
+            f"--inFile={str(self.inputPath)} ",
+            f"--outFile={self.outFile}"
+        ])
 
         self._run_docker(cmdToRun)
 

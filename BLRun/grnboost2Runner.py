@@ -23,19 +23,22 @@ class GRNBoost2Runner(Runner):
             # Write .csv file
             ExpressionData.T.to_csv(GRNBOOST2_EXPRESSION_FILE,
                                  sep = '\t', header  = True, index = True)
+        self.inputPath = GRNBOOST2_EXPRESSION_FILE
+        self.outFile = f"{self.working_dir}/outFile.txt"
 
     def run(self):
         '''
         Function to run GRNBOOST2 algorithm
         '''
 
-        cmdToRun = ' '.join(['docker run --rm',
-                            f"-v {self.working_dir}:/usr/working_dir",
-                            '--expose=41269',
-                            f'{self.image} /bin/sh -c \"time -v -o',
-                            "/usr/working_dir/time.txt",
-                            'python runArboreto.py --algo=GRNBoost2',
-                            '--inFile=/usr/working_dir/ExpressionData.csv', '--outFile=/usr/working_dir/outFile.txt', '\"'])
+        timePath = str(self.working_dir) + '/time.txt'
+        cmdToRun = ' '.join([
+            'time -v -o',
+            timePath,
+            'python Algorithms/PIDC/runArboreto.py --algo=GRNBoost2',
+            f"--inFile={str(self.inputPath)} ",
+            f"--outFile={self.outFile}"
+        ])
 
         self._run_docker(cmdToRun)
 

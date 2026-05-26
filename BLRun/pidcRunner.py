@@ -21,18 +21,22 @@ class PIDCRunner(Runner):
                                          header = 0, index_col = 0)
             ExpressionData.to_csv(PIDC_EXPRESSION_FILE,
                                  sep = '\t', header  = True, index = True)
+        self.inputPath = PIDC_EXPRESSION_FILE
+        self.outFile = f"{self.working_dir}/outFile.txt"
 
     def run(self):
         '''
         Function to run PIDC algorithm
         '''
 
-        cmdToRun = ' '.join(['docker run --rm',
-                            f"-v {self.working_dir}:/usr/working_dir",
-                            f'{self.image} /bin/sh -c \"time -v -o',
-                            "/usr/working_dir/time.txt",
-                            'julia runPIDC.jl',
-                            "/usr/working_dir/ExpressionData.csv", "/usr/working_dir/outFile.txt", '\"'])
+        timePath = str(self.working_dir) + '/time.txt'
+        cmdToRun = ' '.join([
+            'time -v -o',
+            timePath,
+            'julia Algorithms/PIDC/runPIDC.jl',
+            str(self.inputPath),
+            self.outFile,
+        ])
 
         self._run_docker(cmdToRun)
 
