@@ -1,0 +1,34 @@
+name: beeline_gbr
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.12
+  - pip
+  #
+  - basedpyright
+  - devtools
+  - jupyter
+  - rpy2==3.5.11
+  - r=4.3
+  - networkx
+  - numpy
+  - openpyxl
+  - pandas
+  - polars
+  - pydantic
+  - PyYAML
+  - pytables
+  - scikit-learn
+  - scipy
+  - seaborn
+  - tqdm
+  - bioconda::mygene==3.2.2
+  #
+  - pip:
+      - anndata
+      - arboreto
+      - lightgbm
+      - scanpy
+      - xgboost

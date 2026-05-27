@@ -35,7 +35,7 @@ class GRNBoost2Runner(Runner):
         cmdToRun = ' '.join([
             'time -v -o',
             timePath,
-            'python Algorithms/PIDC/runArboreto.py --algo=GRNBoost2',
+            'python Algorithms/ARBORETO/runArboreto.py --algo=GRNBoost2',
             f"--inFile={str(self.inputPath)} ",
             f"--outFile={self.outFile}"
         ])

@@ -26,6 +26,8 @@ from BLRun.dpiRunner import DPIRunner
 from BLRun.mcp4Runner import MCP4Runner
 from BLRun.mcp3Runner import MCP3Runner
 from BLRun.mcp2Runner import MCP2Runner
+from BLRun.parpidcRunner import ParPIDCRunner
+from BLRun.pargbmRunner import ParGBMRunner
 
 RUNNERS = {
     'GENIE3':       GENIE3Runner,
@@ -47,7 +49,8 @@ RUNNERS = {
     'MI':           MIRunner,
     'LGBM':         LightBMRunner,
     'XGB':          XGBRunner,
-    'ARBORETO':     ARBDefaultRunner,
+    'PARPIDC':      ParPIDCRunner,
+    'PARGBM':       ParGBMRunner,
     'DPI':          DPIRunner,
     'MCP2':         MCP2Runner,
     'MCP3':         MCP3Runner,
