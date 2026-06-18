@@ -7,3 +7,10 @@ configs/
 outputs/
 inputs/
 plotting_examples/
+
+# Other
+src/.*
+*.ipynb_checkpoints*
+.DS_Store
+.idea/
+.Rhistory

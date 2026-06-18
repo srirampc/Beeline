@@ -15,17 +15,18 @@ nsamples: 0
 nobs: 0
 nvars: 0
 mode:
-  - misi
-  - samples_ranges
+  - hist_nodes
+  - hist2misi_dist
+  - puc_lmr_dist
   - puc2pidc
 tbase: "2"
 save_nodes: False
 save_node_pairs: True
-lmr_only: False
+lmr_only: True
 """
 
 
-class ParPIDCRunner(Runner):
+class DistPIDCRunner(Runner):
     """Concrete runner for the MI GRN inference algorithm."""
 
     def generateInputs(self):

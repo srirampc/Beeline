@@ -27,6 +27,7 @@ from BLRun.mcp4Runner import MCP4Runner
 from BLRun.mcp3Runner import MCP3Runner
 from BLRun.mcp2Runner import MCP2Runner
 from BLRun.parpidcRunner import ParPIDCRunner
+from BLRun.distpidcRunner import DistPIDCRunner
 from BLRun.pargbmRunner import ParGBMRunner
 
 RUNNERS = {
@@ -50,6 +51,7 @@ RUNNERS = {
     'LGBM':         LightBMRunner,
     'XGB':          XGBRunner,
     'PARPIDC':      ParPIDCRunner,
+    'DISTPIDC':     DistPIDCRunner,
     'PARGBM':       ParGBMRunner,
     'DPI':          DPIRunner,
     'MCP2':         MCP2Runner,

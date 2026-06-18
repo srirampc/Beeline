@@ -1,5 +1,6 @@
 # Include packages
-
+import Pkg
+Pkg.activate("/storage/ideas/is-schockalingam6-0/dev/NetworkInference.jl")
 using NetworkInference
 using LightGraphs
 
